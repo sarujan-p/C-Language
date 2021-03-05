@@ -9,7 +9,7 @@ typedef struct{
 
 Triangle triangle[size];
 	
-void main(){
+int main(){
 	int side1,side2,side3,i=0;
 	char operation;
 	
@@ -47,6 +47,8 @@ void main(){
 	get_type(&i);
 	get_output(&i);
 	
+	return 0;
+	
 }
 void input_sides(int *side1,int *side2,int *side3,int *i){
 	printf("\nEnter the length of the sides for a triangle\n");
@@ -67,19 +69,19 @@ void get_type(int *i){
 	for(a=0;a<=*i;a++){
 		g_side1=triangle[a].sides[0];
 		g_side2=triangle[a].sides[1];
-		g_side3=triangle[a].sides[2];
+		g_side3=triangle[a].sides[2]; 
 		
 		t1=g_side1*g_side1;
 		t2=g_side2*g_side2;
 		t3=g_side3*g_side3;
 		
-		if((g_side1 <= g_side2+g_side3) && (g_side2 <= g_side1+g_side3) && (g_side3 <= g_side1+g_side2)){
+		if((g_side1 <= g_side2+g_side3) && (g_side2 <= g_side1+g_side3) && (g_side3 <= g_side1+g_side2) && g_side1 > 0 && g_side2 > 0 && g_side3 > 0){
 			if((t1==t2+t3) || (t2==t1+t3) || (t3==t1+t2)){
 				strcpy(triangle[a].type,"A right triangle ");
 			}else if(g_side1==g_side2 || g_side1==g_side3 || g_side2==g_side3){
 				if(g_side1==g_side2 && g_side2==g_side3 && g_side1==g_side3){
 					strcpy(triangle[a].type,"An equilateral triangle");
-				}else if(((t1==t2+t3) || (t2==t1+t3) || (t3==t1+t2))){
+				}else if((t1==t2+t3) || (t2==t1+t3) || (t3==t1+t2)){
 					strcpy(triangle[a].type,"A right & isosceles triangle");
 				}else{
 					strcpy(triangle[a].type,"An isosceles triangle");
