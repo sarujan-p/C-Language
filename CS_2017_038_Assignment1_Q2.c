@@ -10,6 +10,7 @@ typedef struct{
 Triangle triangle[size];
 	
 int main(){
+	system("color 02");
 	int side1,side2,side3,i=0;
 	char operation;
 	
