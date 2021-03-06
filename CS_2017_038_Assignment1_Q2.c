@@ -3,23 +3,21 @@
 #define size 1000
 
 typedef struct{
-	int sides[4];
-	char type[30];
+	int sides[3];
+	char type[20];
 }Triangle;
-
-Triangle triangle[size];
 	
 int main(){
-	system("color 02");
 	int side1,side2,side3,i=0;
 	char operation;
+	Triangle triangle[size];
 	
-	void input_sides(int *,int *,int *,int *);
-	void get_type(int *);
-	void get_output(int *);
+	void input_sides(Triangle[],int *,int *,int *,int *);
+	void get_type(Triangle[],int *);
+	void get_output(Triangle[],int *);
 	
 	do{
-		input_sides(&side1,&side2,&side3,&i);
+		input_sides(triangle,&side1,&side2,&side3,&i);
 		printf("\nInput another?(Y/N):");
 		scanf(" %c",&operation);
 		switch(operation){
@@ -45,13 +43,13 @@ int main(){
 				}
 		}
 	}while(operation != 'N');
-	get_type(&i);
-	get_output(&i);
+	get_type(triangle,&i);
+	get_output(triangle,&i);
 	
 	return 0;
 	
 }
-void input_sides(int *side1,int *side2,int *side3,int *i){
+void input_sides(Triangle triangle[],int *side1,int *side2,int *side3,int *i){
 	printf("\nEnter the length of the sides for a triangle\n");
 	printf("Side 1 = ");
 	scanf("%d",side1);
@@ -65,7 +63,7 @@ void input_sides(int *side1,int *side2,int *side3,int *i){
 	triangle[*i].sides[2]=*side3;
 	
 }
-void get_type(int *i){
+void get_type(Triangle triangle[],int *i){
 	int a,g_side1,g_side2,g_side3,t1,t2,t3;
 	for(a=0;a<=*i;a++){
 		g_side1=triangle[a].sides[0];
@@ -95,11 +93,11 @@ void get_type(int *i){
 		}
 	}
 }
-void get_output(int *i){
+void get_output(Triangle triangle[],int *i){
 	int j,b;
-	printf("\nThe details of the triangles are:");
+	printf("\nThe details of the triangles are");
 	for(b=0;b<=*i;b++){
-		printf("\nTriangle number %d:\n",b+1);
+		printf("\nTriangle number %d\n",b+1);
 		for(j=0;j<3;j++){
 			printf("Side %d = %d\n",j+1,triangle[b].sides[j]);
 		}
