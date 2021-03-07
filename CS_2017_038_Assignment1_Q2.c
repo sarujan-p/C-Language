@@ -4,7 +4,7 @@
 
 typedef struct{
 	int sides[3];
-	char type[20];
+	char type[50];
 }Triangle;
 	
 int main(){
@@ -61,7 +61,6 @@ void input_sides(Triangle triangle[],int *side1,int *side2,int *side3,int *i){
 	triangle[*i].sides[0]=*side1;
 	triangle[*i].sides[1]=*side2;
 	triangle[*i].sides[2]=*side3;
-	
 }
 void get_type(Triangle triangle[],int *i){
 	int a,g_side1,g_side2,g_side3,t1,t2,t3;
@@ -78,7 +77,7 @@ void get_type(Triangle triangle[],int *i){
 			if((t1==t2+t3) || (t2==t1+t3) || (t3==t1+t2)){
 				strcpy(triangle[a].type,"A right triangle ");
 			}else if(g_side1==g_side2 || g_side1==g_side3 || g_side2==g_side3){
-				if(g_side1==g_side2 && g_side2==g_side3 && g_side1==g_side3){
+				if(g_side1==g_side2 && g_side2==g_side3){
 					strcpy(triangle[a].type,"An equilateral triangle");
 				}else if((t1==t2+t3) || (t2==t1+t3) || (t3==t1+t2)){
 					strcpy(triangle[a].type,"A right & isosceles triangle");
